@@ -34,6 +34,10 @@ section .text
     ret
 
 strrchr:
+    ; 1st_param (rdi) : const char *
+    ; 2nd_param (rsi) : char
+    ; ret       (rax) : char *
+
     mov r11, 0              ; initialise un registre buffer à NULL (ici, r11)
     mov rax, rdi            ; initialisation de la return value au pointeur sur
                             ; le premier caractère de 1st_param

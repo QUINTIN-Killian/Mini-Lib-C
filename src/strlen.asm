@@ -20,6 +20,9 @@ section .text
     ret                     ; return le contenu de rax
 
 strlen:
+    ; 1st_param (rdi) : const char *
+    ; ret       (rax) : size_t
+
     mov rax, 0              ; initialisation de la return value à 0
                             ; + sert d'itérateur
     jmp .LOOP               ; rentre dans la loop

@@ -31,6 +31,10 @@ section .text
     ret
 
 strchr:
+    ; 1st_param (rdi) : const char *
+    ; 2nd_param (rsi) : char
+    ; ret       (rax) : char *
+
     mov rax, rdi            ; initialisation de la return value au pointeur sur
                             ; le premier caractère de 1st_param
     jmp .LOOP               ; jump vers la boucle principale
