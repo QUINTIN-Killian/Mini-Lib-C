@@ -24,8 +24,11 @@ section .text
                                 ; pointée par 2nd_param
     cmp r10b, r11b              ; compare les deux registres précédemment set
     je .INCREMENTER             ; cas où *1st_param == *2nd_param
-    mov rax, r10
-    sub rax, r11
+    mov rax, r10                ; initialisation de la return value à la valeur
+                                ; ascii du caractère pointé par 1st_param
+    sub rax, r11                ; soustraction de la valeur de retour avec la
+                                ; valeur ascii du caractère pointé par
+                                ; 2nd_param
     ret
 
 .RETURN:
