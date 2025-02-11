@@ -9,15 +9,24 @@ global strchr
 
 section .text
 
-; incrementer:
-;     inc rax             ; incrémentation de la return value (qui sert aussi
-;                         ; d'itérateur)
+.INCREMENTER:
+    inc rax                 ; incrémentation du pointeur pour passer au
+                            ; caractère suivant
 
-; loop:
-;     cmp [rdi + rax], [rsi]
-;     jne incrementer
-;     ret
+.LOOP:
+    cmp al, 0               ; vérifie que le registre 8 bits est égal à la fin
+    je .NULL_RETURN
+    cmp [rax], sil          ; vérifie si le caractère actuel est égal à
+                            ; 2nd_param (en déréférençant)
+    jne .INCREMENTER        ; si non, incrémente
+    ret                     ; si le jmp n'est pas appelé, c'est que le
+                            ; caractère est trouvé
+
+.NULL_RETURN:
+    mov rax, 0              ; initialise la valeur de retour à NULL
+    ret
 
 strchr:
-    mov rax, 0          ; initialisation de la return value à 0
-    ret
+    mov rax, rdi            ; initialisation de la return value au pointeur sur
+                            ; le premier caractère de 1st_param
+    jmp .LOOP               ; jump vers la boucle principale
