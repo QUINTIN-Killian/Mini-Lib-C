@@ -14,10 +14,11 @@ section .text
                             ; caractère suivant
 
 .LOOP:
-    cmp al, 0               ; vérifie que le registre 8 bits est égal à la fin
+    mov r10b, [rax]         ; récupère le caractère sur lequel pointe rax
+    cmp r10b, 0             ; vérifie si le caractère récupéré est '\0'
     je .NULL_RETURN
-    cmp [rax], sil          ; vérifie si le caractère actuel est égal à
-                            ; 2nd_param (en déréférençant)
+    cmp r10b, sil           ; vérifie si le caractère récupéré est égal à
+                            ; 2nd_param
     jne .INCREMENTER        ; si non, incrémente
     ret                     ; si le jmp n'est pas appelé, c'est que le
                             ; caractère est trouvé
