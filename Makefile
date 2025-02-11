@@ -5,18 +5,24 @@
 ## Makefile
 ##
 
-SRC	=	strlen.asm
+SRC	=	src/strlen.asm	\
+		src/strchr.asm	\
+
+OBJ	=	$(SRC:src/%.asm=bin/%.o)
 
 LIB_NAME	=	libasm.so
 
 all:	$(LIB_NAME)
 
-$(LIB_NAME):	$(SRC)
-	nasm -f elf64 $(SRC)
-	ld -shared -o $(LIB_NAME) *.o
+$(LIB_NAME):	$(OBJ)
+	ld -shared -o $(LIB_NAME) $(OBJ)
+
+bin/%.o:	src/%.asm
+	@mkdir -p bin
+	nasm -f elf64 $< -o $@
 
 clean:
-	rm -f *.o
+	rm -rf bin
 
 fclean:	clean
 	rm -f $(LIB_NAME)
