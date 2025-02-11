@@ -11,6 +11,7 @@ SRC	=	src/strlen.asm	\
 		src/memset.asm	\
 		src/memcpy.asm	\
 		src/strcmp.asm	\
+		src/strncmp.asm	\
 
 OBJ	=	$(SRC:src/%.asm=bin/%.o)
 
