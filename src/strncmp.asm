@@ -18,8 +18,8 @@ section .text
     inc rsi                     ; incrémentation
 
 .LOOP:
-    cmp rdx, 0                  ; vérifie si les 3rd_param caractères ont tous
-                                ; été explorés
+    cmp rdx, 0                  ; vérifie si les 3rd_param premiers caractères
+                                ; ont tous été explorés
     je .RETURN                  ; return simple de rax (égal à 0)
     dec rdx                     ; décrémentation
     mov r10b, [rdi]             ; initialisation du registre r10b à la valeur
