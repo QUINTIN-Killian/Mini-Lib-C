@@ -3,4 +3,5 @@ a.out
 libasm.so
 *.o
 my_exec.sh
+bin/
 .vscode
