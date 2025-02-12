@@ -13,7 +13,8 @@ SRC	=	src/strlen.asm		\
 		src/strcmp.asm		\
 		src/strncmp.asm		\
 		src/strcasecmp.asm	\
-		src/strpbrk.asm	\
+		src/strpbrk.asm		\
+		src/strstr.asm		\
 
 OBJ	=	$(SRC:src/%.asm=bin/%.o)
 
